@@ -8,7 +8,7 @@ https://cs.nyu.edu/~gottlieb/tr/
 
 Y2018. How many integers from 1 to 100 can you form using the 
 digits 2, 0, 1, and 8 exactly once each, along with the operators 
-+, -, ≈ (multiplication), / (division), and ˆ (exponentiation)? We 
++, -, * (multiplication), / (division), and ˆ (exponentiation)? We 
 desire solutions containing the minimum number of operators; 
 among solutions having a given number of operators, those using 
 the digits in the order 2, 0, 1, 8 are preferred. Parentheses may 
