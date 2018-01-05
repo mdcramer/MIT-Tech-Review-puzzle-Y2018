@@ -46,23 +46,30 @@ def store_best(equation, ans):
         elif num_operators(equation) == num_operators(best[ans]):
             if len(equation) <= len(best[ans]): # eliminates uncessary parenthesis
                 best[ans] = equation
-
-def run_evaulation(equation):
-    global num_equations
+                
+def evaluate(equation):
     ans = 0
     try:
         ans = eval(equation.replace("^", "**"))
     except ZeroDivisionError: # catches divide by zero errors
         pass
     except SyntaxError: # catches errors where number has leading zero
-        pass
+        if "0" in equation:
+            ans = evaluate(equation.replace("0", "")) # remove zero and run again
+        else:
+            pass
     except: # catches errors with misplaced parenthesis
         pass
+    return ans
+
+def run_evaulation(equation):
+    global num_equations
+    ans = evaluate(equation)
     if (type(ans).__name__ == 'int' and 1 <= ans <= 100):
         num_equations += 1
         num_ops = num_operators(equation)
         print("%s = %d with %d operators" % (equation, ans, num_ops))
-        store_best(equation, ans)
+        store_best(equation, ans) # check to see if this is best solution
 
 def find_solutions(n1, n2, n3, n4):    
     for a in ["", "-"]: # leading minus possible
